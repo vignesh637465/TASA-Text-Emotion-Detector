@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Emotion Detector | Text & Speech Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-icon">🎭💭</div>
+            <h1>Text Emotion Detector</h1>
+            <p class="subtitle">Classify text into Happy, Sad, Angry, Fear, Surprise, or Neutral emotions</p>
+        </header>
+
+        <!-- Main Card -->
+        <main class="main-card">
+            <!-- Preset Samples -->
+            <section class="preset-section">
+                <span class="preset-label">Try sample emotion sentences:</span>
+                <div class="preset-buttons">
+                    <button type="button" class="btn-preset" data-text="I am extremely happy because I got my dream job today!">😊 Happy</button>
+                    <button type="button" class="btn-preset" data-text="I feel so sad and lonely after hearing the terrible news.">😢 Sad</button>
+                    <button type="button" class="btn-preset" data-text="This unfair decision makes me furious and angry!">😡 Angry</button>
+                    <button type="button" class="btn-preset" data-text="I am terrified of walking alone in the dark forest.">😨 Fear</button>
+                    <button type="button" class="btn-preset" data-text="Wow! I cannot believe we won the championship trophy!">😲 Surprise</button>
+                </div>
+            </section>
+
+            <!-- Input Area -->
+            <section class="input-section">
+                <label for="textInput" class="input-label">Enter Text to Analyze Emotion:</label>
+                <div class="textarea-wrapper">
+                    <textarea id="textInput" placeholder="Type a sentence expressing your thoughts or feelings..." rows="6"></textarea>
+                    <div class="character-count"><span id="charCount">0</span> characters | <span id="wordCount">0</span> words</div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="analyzeBtn" class="btn btn-primary">
+                        <span class="btn-icon">⚡</span> Detect Emotion
+                    </button>
+                    <button id="clearBtn" class="btn btn-secondary">
+                        <span class="btn-icon">🗑️</span> Clear
+                    </button>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section hidden">
+                <div class="divider"></div>
+                <h2>Emotion Detection Results</h2>
+
+                <div class="result-grid">
+                    <!-- Primary Emotion Display -->
+                    <div class="emotion-card" id="primaryEmotionCard">
+                        <div class="emotion-emoji" id="detectedEmoji">😊</div>
+                        <div class="emotion-name" id="detectedEmotion">Happy</div>
+                        <div class="confidence-badge">
+                            <span>Confidence: </span>
+                            <strong id="confidenceScore">85%</strong>
+                        </div>
+                    </div>
+
+                    <!-- Emotion Spectrum Breakdown -->
+                    <div class="breakdown-card">
+                        <h3>Emotion Spectrum Breakdown</h3>
+                        
+                        <div class="spectrum-list">
+                            <!-- Happy -->
+                            <div class="spectrum-item">
+                                <span class="emotion-title">😊 Happy</span>
+                                <div class="bar-wrapper">
+                                    <div id="barHappy" class="bar bar-happy"></div>
+                                </div>
+                                <span id="valHappy" class="pct-val">0%</span>
+                            </div>
+
+                            <!-- Sad -->
+                            <div class="spectrum-item">
+                                <span class="emotion-title">😢 Sad</span>
+                                <div class="bar-wrapper">
+                                    <div id="barSad" class="bar bar-sad"></div>
+                                </div>
+                                <span id="valSad" class="pct-val">0%</span>
+                            </div>
+
+                            <!-- Angry -->
+                            <div class="spectrum-item">
+                                <span class="emotion-title">😡 Angry</span>
+                                <div class="bar-wrapper">
+                                    <div id="barAngry" class="bar bar-angry"></div>
+                                </div>
+                                <span id="valAngry" class="pct-val">0%</span>
+                            </div>
+
+                            <!-- Fear -->
+                            <div class="spectrum-item">
+                                <span class="emotion-title">😨 Fear</span>
+                                <div class="bar-wrapper">
+                                    <div id="barFear" class="bar bar-fear"></div>
+                                </div>
+                                <span id="valFear" class="pct-val">0%</span>
+                            </div>
+
+                            <!-- Surprise -->
+                            <div class="spectrum-item">
+                                <span class="emotion-title">😲 Surprise</span>
+                                <div class="bar-wrapper">
+                                    <div id="barSurprise" class="bar bar-surprise"></div>
+                                </div>
+                                <span id="valSurprise" class="pct-val">0%</span>
+                            </div>
+
+                            <!-- Neutral -->
+                            <div class="spectrum-item">
+                                <span class="emotion-title">😐 Neutral</span>
+                                <div class="bar-wrapper">
+                                    <div id="barNeutral" class="bar bar-neutral"></div>
+                                </div>
+                                <span id="valNeutral" class="pct-val">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detected Emotion Keywords -->
+                <div class="keywords-box">
+                    <h3>Detected Emotion Trigger Keywords</h3>
+                    <div id="emotionKeywords" class="tags-container">
+                        <span class="no-tags">None detected</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>Text & Speech Analysis Project #4 &bull; Multi-Class Emotion NLP Lexicon</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
